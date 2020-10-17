@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./styles.scss";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import Routes from "./Routes";
-import RTL from "./rtl";
+//import RTL from "./rtl";
 import { ThemeContextProvider, ThemeContextConsumer } from "./context/darkMode";
 import { CookiesProvider, useCookies, Cookies } from "react-cookie";
 const theme = createMuiTheme({
@@ -37,11 +37,11 @@ const routing = (
     <ThemeContextProvider
       value={cookie.get("theme") ? cookie.get("theme") : "Light"}
     >
-      <RTL>
-        <MuiThemeProvider theme={theme}>
-          <Routes />
-        </MuiThemeProvider>
-      </RTL>
+      {/*<RTL>*/}
+      <MuiThemeProvider theme={theme}>
+        <Routes />
+      </MuiThemeProvider>
+      {/*</RTL>*/}
     </ThemeContextProvider>
   </CookiesProvider>
 );
