@@ -63,8 +63,16 @@ const useStyles = makeStyles((theme) => ({
   tweetBox: {
     borderBottom: "solid 1px grey",
   },
-  newTweetBox: {
+  profileBox: {
+    height: "500px",
+    position: "relative",
+    // backgroundImage: "url(http://localhost:3000/static/aa.jpg)",
     borderBottom: "solid 10px grey",
+  },
+  profileHeader: {
+    height: "35%",
+    width: "100%",
+    backgroundImage: "url(http://localhost:3000/static/aa.jpg)",
   },
   tweetButton: {
     paddingRight: theme.spacing(3),
@@ -95,6 +103,18 @@ const useStyles = makeStyles((theme) => ({
   },
   leftPaneIcons: {
     width: "1.5em",
+  },
+  profilePhoto: {
+    width: theme.spacing(20),
+    height: theme.spacing(20),
+    //margi: theme.spacing(1),
+    position: "absolute",
+    top: "18%",
+    left: "25px",
+    border: "3px solid #fafafa",
+  },
+  profileIcons: {
+    height: "1.25em",
   },
 }));
 
@@ -232,112 +252,174 @@ export default function Dashboard(props) {
             <Grid item xs={4} className={classes.centerPane}>
               <Box p={2} classes={{ root: classes.pageTitle }}>
                 <Grid container>
-                  <Typography>Home</Typography>
+                  <Typography>Profile</Typography>
                   {/*<IconButton>
                     <Home />
                   </IconButton>*/}
                 </Grid>
               </Box>
-              <Box p={2} className={classes.newTweetBox}>
-                <Grid container xs={12}>
-                  <Grid item xs={2}>
-                    <Avatar
-                      src="https://material-ui.com/static/images/avatar/1.jpg"
-                      className={classes.profilePic}
-                    />
+              <Box className={classes.profileBox}>
+                <div className={classes.profileHeader}></div>
+                <Avatar
+                  src="https://material-ui.com/static/images/avatar/1.jpg"
+                  className={classes.profilePhoto}
+                />
+                <Box m={3}>
+                  <Grid container justify="flex-end">
+                    <Grid item>
+                      <Button outlined classes={{ root: classes.tweetButton }}>
+                        Edit Profile
+                      </Button>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={10}>
-                    <InputBase
-                      multiline
-                      fullWidth
-                      placeholder="What's Happening?"
-                    />
-                    <Grid container justify="space-between">
+                  <Box m={1}>
+                    <Typography variant="h6">Milad Hazrati</Typography>
+                    <Typography
+                      variant="body2"
+                      classes={{ root: classes.userID }}
+                    >
+                      @MiladHazrati75
+                    </Typography>
+                  </Box>
+                  <Box m={1}>
+                    <Typography variant="caption">
+                      23 | Researcher @UBCERT , Technical Writer @Ravro_ir
+                      Enthusiastic about CyberSecurity, Technology, Politics and
+                      Entrepreneurship.
+                    </Typography>
+                  </Box>
+                  <Box m={1}>
+                    <Grid container spacing={1}>
                       <Grid item>
-                        <Grid container spacing={2}>
+                        <Grid container spacing={1}>
                           <Grid item>
                             <svg
                               viewBox="0 0 24 24"
-                              className={classes.tweetAction}
+                              className={classes.profileIcons}
                             >
                               <g>
-                                <path d="M19.75 2H4.25C3.01 2 2 3.01 2 4.25v15.5C2 20.99 3.01 22 4.25 22h15.5c1.24 0 2.25-1.01 2.25-2.25V4.25C22 3.01 20.99 2 19.75 2zM4.25 3.5h15.5c.413 0 .75.337.75.75v9.676l-3.858-3.858c-.14-.14-.33-.22-.53-.22h-.003c-.2 0-.393.08-.532.224l-4.317 4.384-1.813-1.806c-.14-.14-.33-.22-.53-.22-.193-.03-.395.08-.535.227L3.5 17.642V4.25c0-.413.337-.75.75-.75zm-.744 16.28l5.418-5.534 6.282 6.254H4.25c-.402 0-.727-.322-.744-.72zm16.244.72h-2.42l-5.007-4.987 3.792-3.85 4.385 4.384v3.703c0 .413-.337.75-.75.75z"></path>
-                                <circle
-                                  cx="8.868"
-                                  cy="8.309"
-                                  r="1.542"
-                                ></circle>
+                                <path d="M12 14.315c-2.088 0-3.787-1.698-3.787-3.786S9.913 6.74 12 6.74s3.787 1.7 3.787 3.787-1.7 3.785-3.787 3.785zm0-6.073c-1.26 0-2.287 1.026-2.287 2.287S10.74 12.814 12 12.814s2.287-1.025 2.287-2.286S13.26 8.24 12 8.24z"></path>
+                                <path d="M20.692 10.69C20.692 5.9 16.792 2 12 2s-8.692 3.9-8.692 8.69c0 1.902.603 3.708 1.743 5.223l.003-.002.007.015c1.628 2.07 6.278 5.757 6.475 5.912.138.11.302.163.465.163.163 0 .327-.053.465-.162.197-.155 4.847-3.84 6.475-5.912l.007-.014.002.002c1.14-1.516 1.742-3.32 1.742-5.223zM12 20.29c-1.224-.99-4.52-3.715-5.756-5.285-.94-1.25-1.436-2.742-1.436-4.312C4.808 6.727 8.035 3.5 12 3.5s7.192 3.226 7.192 7.19c0 1.57-.497 3.062-1.436 4.313-1.236 1.57-4.532 4.294-5.756 5.285z"></path>
                               </g>
                             </svg>
                           </Grid>
                           <Grid item>
-                            <svg
-                              viewBox="0 0 24 24"
-                              className={classes.tweetAction}
-                            >
-                              <g>
-                                <path d="M19 10.5V8.8h-4.4v6.4h1.7v-2h2v-1.7h-2v-1H19zm-7.3-1.7h1.7v6.4h-1.7V8.8zm-3.6 1.6c.4 0 .9.2 1.2.5l1.2-1C9.9 9.2 9 8.8 8.1 8.8c-1.8 0-3.2 1.4-3.2 3.2s1.4 3.2 3.2 3.2c1 0 1.8-.4 2.4-1.1v-2.5H7.7v1.2h1.2v.6c-.2.1-.5.2-.8.2-.9 0-1.6-.7-1.6-1.6 0-.8.7-1.6 1.6-1.6z"></path>
-                                <path d="M20.5 2.02h-17c-1.24 0-2.25 1.007-2.25 2.247v15.507c0 1.238 1.01 2.246 2.25 2.246h17c1.24 0 2.25-1.008 2.25-2.246V4.267c0-1.24-1.01-2.247-2.25-2.247zm.75 17.754c0 .41-.336.746-.75.746h-17c-.414 0-.75-.336-.75-.746V4.267c0-.412.336-.747.75-.747h17c.414 0 .75.335.75.747v15.507z"></path>
-                              </g>
-                            </svg>
-                          </Grid>
-                          <Grid item>
-                            <svg
-                              viewBox="0 0 24 24"
-                              className={classes.tweetAction}
-                            >
-                              <g>
-                                <path d="M20.222 9.16h-1.334c.015-.09.028-.182.028-.277V6.57c0-.98-.797-1.777-1.778-1.777H3.5V3.358c0-.414-.336-.75-.75-.75s-.75.336-.75.75V20.83c0 .415.336.75.75.75s.75-.335.75-.75v-1.434h10.556c.98 0 1.778-.797 1.778-1.777v-2.313c0-.095-.014-.187-.028-.278h4.417c.98 0 1.778-.798 1.778-1.778v-2.31c0-.983-.797-1.78-1.778-1.78zM17.14 6.293c.152 0 .277.124.277.277v2.31c0 .154-.125.28-.278.28H3.5V6.29h13.64zm-2.807 9.014v2.312c0 .153-.125.277-.278.277H3.5v-2.868h10.556c.153 0 .277.126.277.28zM20.5 13.25c0 .153-.125.277-.278.277H3.5V10.66h16.722c.153 0 .278.124.278.277v2.313z"></path>
-                              </g>
-                            </svg>
-                          </Grid>
-                          <Grid item>
-                            <svg
-                              viewBox="0 0 24 24"
-                              className={classes.tweetAction}
-                            >
-                              <g>
-                                <path d="M12 22.75C6.072 22.75 1.25 17.928 1.25 12S6.072 1.25 12 1.25 22.75 6.072 22.75 12 17.928 22.75 12 22.75zm0-20C6.9 2.75 2.75 6.9 2.75 12S6.9 21.25 12 21.25s9.25-4.15 9.25-9.25S17.1 2.75 12 2.75z"></path>
-                                <path d="M12 17.115c-1.892 0-3.633-.95-4.656-2.544-.224-.348-.123-.81.226-1.035.348-.226.812-.124 1.036.226.747 1.162 2.016 1.855 3.395 1.855s2.648-.693 3.396-1.854c.224-.35.688-.45 1.036-.225.35.224.45.688.226 1.036-1.025 1.594-2.766 2.545-4.658 2.545z"></path>
-                                <circle
-                                  cx="14.738"
-                                  cy="9.458"
-                                  r="1.478"
-                                ></circle>
-                                <circle
-                                  cx="9.262"
-                                  cy="9.458"
-                                  r="1.478"
-                                ></circle>
-                              </g>
-                            </svg>
-                          </Grid>
-                          <Grid item>
-                            <svg
-                              viewBox="0 0 24 24"
-                              className={classes.tweetAction}
-                            >
-                              <g>
-                                <path d="M-37.9 18c-.1-.1-.1-.1-.1-.2.1 0 .1.1.1.2z"></path>
-                                <path d="M-37.9 18c-.1-.1-.1-.1-.1-.2.1 0 .1.1.1.2zM18 2.2h-1.3v-.3c0-.4-.3-.8-.8-.8-.4 0-.8.3-.8.8v.3H7.7v-.3c0-.4-.3-.8-.8-.8-.4 0-.8.3-.8.8v.3H4.8c-1.4 0-2.5 1.1-2.5 2.5v13.1c0 1.4 1.1 2.5 2.5 2.5h2.9c.4 0 .8-.3.8-.8 0-.4-.3-.8-.8-.8H4.8c-.6 0-1-.5-1-1V7.9c0-.3.4-.7 1-.7H18c.6 0 1 .4 1 .7v1.8c0 .4.3.8.8.8.4 0 .8-.3.8-.8v-5c-.1-1.4-1.2-2.5-2.6-2.5zm1 3.7c-.3-.1-.7-.2-1-.2H4.8c-.4 0-.7.1-1 .2V4.7c0-.6.5-1 1-1h1.3v.5c0 .4.3.8.8.8.4 0 .8-.3.8-.8v-.5h7.5v.5c0 .4.3.8.8.8.4 0 .8-.3.8-.8v-.5H18c.6 0 1 .5 1 1v1.2z"></path>
-                                <path d="M15.5 10.4c-3.4 0-6.2 2.8-6.2 6.2 0 3.4 2.8 6.2 6.2 6.2 3.4 0 6.2-2.8 6.2-6.2 0-3.4-2.8-6.2-6.2-6.2zm0 11c-2.6 0-4.7-2.1-4.7-4.7s2.1-4.7 4.7-4.7 4.7 2.1 4.7 4.7c0 2.5-2.1 4.7-4.7 4.7z"></path>
-                                <path d="M18.9 18.7c-.1.2-.4.4-.6.4-.1 0-.3 0-.4-.1l-3.1-2v-3c0-.4.3-.8.8-.8.4 0 .8.3.8.8v2.2l2.4 1.5c.2.2.3.6.1 1z"></path>
-                              </g>
-                            </svg>
+                            <Typography variant="caption">
+                              Islamic Republic of Iran
+                            </Typography>
                           </Grid>
                         </Grid>
                       </Grid>
                       <Grid item>
-                        <Button
-                          outlined
-                          classes={{ root: classes.tweetButton }}
-                        >
-                          Tweet
-                        </Button>
+                        <Grid container spacing={1}>
+                          <Grid item>
+                            <svg
+                              viewBox="0 0 24 24"
+                              className={classes.profileIcons}
+                            >
+                              <g>
+                                <path d="M11.96 14.945c-.067 0-.136-.01-.203-.027-1.13-.318-2.097-.986-2.795-1.932-.832-1.125-1.176-2.508-.968-3.893s.942-2.605 2.068-3.438l3.53-2.608c2.322-1.716 5.61-1.224 7.33 1.1.83 1.127 1.175 2.51.967 3.895s-.943 2.605-2.07 3.438l-1.48 1.094c-.333.246-.804.175-1.05-.158-.246-.334-.176-.804.158-1.05l1.48-1.095c.803-.592 1.327-1.463 1.476-2.45.148-.988-.098-1.975-.69-2.778-1.225-1.656-3.572-2.01-5.23-.784l-3.53 2.608c-.802.593-1.326 1.464-1.475 2.45-.15.99.097 1.975.69 2.778.498.675 1.187 1.15 1.992 1.377.4.114.633.528.52.928-.092.33-.394.547-.722.547z"></path>
+                                <path d="M7.27 22.054c-1.61 0-3.197-.735-4.225-2.125-.832-1.127-1.176-2.51-.968-3.894s.943-2.605 2.07-3.438l1.478-1.094c.334-.245.805-.175 1.05.158s.177.804-.157 1.05l-1.48 1.095c-.803.593-1.326 1.464-1.475 2.45-.148.99.097 1.975.69 2.778 1.225 1.657 3.57 2.01 5.23.785l3.528-2.608c1.658-1.225 2.01-3.57.785-5.23-.498-.674-1.187-1.15-1.992-1.376-.4-.113-.633-.527-.52-.927.112-.4.528-.63.926-.522 1.13.318 2.096.986 2.794 1.932 1.717 2.324 1.224 5.612-1.1 7.33l-3.53 2.608c-.933.693-2.023 1.026-3.105 1.026z"></path>
+                              </g>
+                            </svg>
+                          </Grid>
+                          <Grid item>
+                            <Typography variant="caption">
+                              profile.ir/MiladHazrati
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid item>
+                        <Grid container spacing={1}>
+                          <Grid item>
+                            <svg
+                              viewBox="0 0 24 24"
+                              className={classes.profileIcons}
+                            >
+                              <g>
+                                <path d="M7.75 11.083c-.414 0-.75-.336-.75-.75C7 7.393 9.243 5 12 5c.414 0 .75.336.75.75s-.336.75-.75.75c-1.93 0-3.5 1.72-3.5 3.833 0 .414-.336.75-.75.75z"></path>
+                                <path d="M20.75 10.333c0-5.01-3.925-9.083-8.75-9.083s-8.75 4.074-8.75 9.083c0 4.605 3.32 8.412 7.605 8.997l-1.7 1.83c-.137.145-.173.357-.093.54.08.182.26.3.46.3h4.957c.198 0 .378-.118.457-.3.08-.183.044-.395-.092-.54l-1.7-1.83c4.285-.585 7.605-4.392 7.605-8.997zM12 17.917c-3.998 0-7.25-3.402-7.25-7.584S8.002 2.75 12 2.75s7.25 3.4 7.25 7.583-3.252 7.584-7.25 7.584z"></path>
+                              </g>
+                            </svg>
+                          </Grid>
+                          <Grid item>
+                            <Typography variant="caption">
+                              Born October 26, 1996
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid item>
+                        <Grid container spacing={1}>
+                          <Grid item>
+                            <svg
+                              viewBox="0 0 24 24"
+                              className={classes.profileIcons}
+                            >
+                              <g>
+                                <path d="M19.708 2H4.292C3.028 2 2 3.028 2 4.292v15.416C2 20.972 3.028 22 4.292 22h15.416C20.972 22 22 20.972 22 19.708V4.292C22 3.028 20.972 2 19.708 2zm.792 17.708c0 .437-.355.792-.792.792H4.292c-.437 0-.792-.355-.792-.792V6.418c0-.437.354-.79.79-.792h15.42c.436 0 .79.355.79.79V19.71z"></path>
+                                <circle cx="7.032" cy="8.75" r="1.285"></circle>
+                                <circle
+                                  cx="7.032"
+                                  cy="13.156"
+                                  r="1.285"
+                                ></circle>
+                                <circle
+                                  cx="16.968"
+                                  cy="8.75"
+                                  r="1.285"
+                                ></circle>
+                                <circle
+                                  cx="16.968"
+                                  cy="13.156"
+                                  r="1.285"
+                                ></circle>
+                                <circle cx="12" cy="8.75" r="1.285"></circle>
+                                <circle cx="12" cy="13.156" r="1.285"></circle>
+                                <circle
+                                  cx="7.032"
+                                  cy="17.486"
+                                  r="1.285"
+                                ></circle>
+                                <circle cx="12" cy="17.486" r="1.285"></circle>
+                              </g>
+                            </svg>
+                          </Grid>
+                          <Grid item>
+                            <Typography variant="caption">
+                              Joined January 2013
+                            </Typography>
+                          </Grid>
+                        </Grid>
                       </Grid>
                     </Grid>
-                  </Grid>
-                </Grid>
+                  </Box>
+                  <Box m={1}>
+                    <Grid container spacing={2}>
+                      <Grid item>
+                        <Grid container spacing={1}>
+                          <Grid item>
+                            <Typography variant="caption">11</Typography>
+                          </Grid>
+                          <Grid item>
+                            <Typography variant="caption">Following</Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid item>
+                        <Grid container spacing={1}>
+                          <Grid item>
+                            <Typography variant="caption">11</Typography>
+                          </Grid>
+                          <Grid item>
+                            <Typography variant="caption">Followers</Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </Box>
               </Box>
               <Box p={2} paddingRight={0} className={classes.tweetBox}>
                 <Grid container xs={12} spacing={1}>
