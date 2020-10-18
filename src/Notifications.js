@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     border: 0,
   },
   pageTitle: {
-    borderBottom: "solid 1px grey",
+    borderBottom: 0,
   },
   tweetBox: {
     borderBottom: "solid 1px grey",
@@ -130,18 +130,6 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "#fafafa",
     boxShadow: 0,
-  },
-  gridList: {
-    width: 500,
-    height: 210,
-  },
-  album: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    overflow: "hidden",
-    backgroundColor: theme.palette.background.paper,
-    borderRadius: "15px",
   },
 }));
 
@@ -317,174 +305,11 @@ export default function Dashboard(props) {
             <Grid item xs className={classes.centerPane}>
               <Box p={2} classes={{ root: classes.pageTitle }}>
                 <Grid container>
-                  <Typography>Profile</Typography>
+                  <Typography>Notifications</Typography>
                   {/*<IconButton>
                     <Home />
                   </IconButton>*/}
                 </Grid>
-              </Box>
-              <Box className={classes.profileBox}>
-                <div className={classes.profileHeader}></div>
-                <Avatar
-                  src="https://material-ui.com/static/images/avatar/1.jpg"
-                  className={classes.profilePhoto}
-                />
-                <Box m={3}>
-                  <Grid container justify="flex-end">
-                    <Grid item>
-                      <Button outlined classes={{ root: classes.tweetButton }}>
-                        Edit Profile
-                      </Button>
-                    </Grid>
-                  </Grid>
-                  <Box m={1}>
-                    <Typography variant="h6">Milad Hazrati</Typography>
-                    <Typography
-                      variant="body2"
-                      classes={{ root: classes.userID }}
-                    >
-                      @MiladHazrati75
-                    </Typography>
-                  </Box>
-                  <Box m={1}>
-                    <Typography variant="caption">
-                      23 | Researcher @UBCERT , Technical Writer @Ravro_ir
-                      Enthusiastic about CyberSecurity, Technology, Politics and
-                      Entrepreneurship.
-                    </Typography>
-                  </Box>
-                  <Box m={1}>
-                    <Grid container spacing={1}>
-                      <Grid item>
-                        <Grid container spacing={1}>
-                          <Grid item>
-                            <svg
-                              viewBox="0 0 24 24"
-                              className={classes.profileIcons}
-                            >
-                              <g>
-                                <path d="M12 14.315c-2.088 0-3.787-1.698-3.787-3.786S9.913 6.74 12 6.74s3.787 1.7 3.787 3.787-1.7 3.785-3.787 3.785zm0-6.073c-1.26 0-2.287 1.026-2.287 2.287S10.74 12.814 12 12.814s2.287-1.025 2.287-2.286S13.26 8.24 12 8.24z"></path>
-                                <path d="M20.692 10.69C20.692 5.9 16.792 2 12 2s-8.692 3.9-8.692 8.69c0 1.902.603 3.708 1.743 5.223l.003-.002.007.015c1.628 2.07 6.278 5.757 6.475 5.912.138.11.302.163.465.163.163 0 .327-.053.465-.162.197-.155 4.847-3.84 6.475-5.912l.007-.014.002.002c1.14-1.516 1.742-3.32 1.742-5.223zM12 20.29c-1.224-.99-4.52-3.715-5.756-5.285-.94-1.25-1.436-2.742-1.436-4.312C4.808 6.727 8.035 3.5 12 3.5s7.192 3.226 7.192 7.19c0 1.57-.497 3.062-1.436 4.313-1.236 1.57-4.532 4.294-5.756 5.285z"></path>
-                              </g>
-                            </svg>
-                          </Grid>
-                          <Grid item>
-                            <Typography variant="caption">
-                              Islamic Republic of Iran
-                            </Typography>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                      <Grid item>
-                        <Grid container spacing={1}>
-                          <Grid item>
-                            <svg
-                              viewBox="0 0 24 24"
-                              className={classes.profileIcons}
-                            >
-                              <g>
-                                <path d="M11.96 14.945c-.067 0-.136-.01-.203-.027-1.13-.318-2.097-.986-2.795-1.932-.832-1.125-1.176-2.508-.968-3.893s.942-2.605 2.068-3.438l3.53-2.608c2.322-1.716 5.61-1.224 7.33 1.1.83 1.127 1.175 2.51.967 3.895s-.943 2.605-2.07 3.438l-1.48 1.094c-.333.246-.804.175-1.05-.158-.246-.334-.176-.804.158-1.05l1.48-1.095c.803-.592 1.327-1.463 1.476-2.45.148-.988-.098-1.975-.69-2.778-1.225-1.656-3.572-2.01-5.23-.784l-3.53 2.608c-.802.593-1.326 1.464-1.475 2.45-.15.99.097 1.975.69 2.778.498.675 1.187 1.15 1.992 1.377.4.114.633.528.52.928-.092.33-.394.547-.722.547z"></path>
-                                <path d="M7.27 22.054c-1.61 0-3.197-.735-4.225-2.125-.832-1.127-1.176-2.51-.968-3.894s.943-2.605 2.07-3.438l1.478-1.094c.334-.245.805-.175 1.05.158s.177.804-.157 1.05l-1.48 1.095c-.803.593-1.326 1.464-1.475 2.45-.148.99.097 1.975.69 2.778 1.225 1.657 3.57 2.01 5.23.785l3.528-2.608c1.658-1.225 2.01-3.57.785-5.23-.498-.674-1.187-1.15-1.992-1.376-.4-.113-.633-.527-.52-.927.112-.4.528-.63.926-.522 1.13.318 2.096.986 2.794 1.932 1.717 2.324 1.224 5.612-1.1 7.33l-3.53 2.608c-.933.693-2.023 1.026-3.105 1.026z"></path>
-                              </g>
-                            </svg>
-                          </Grid>
-                          <Grid item>
-                            <Typography variant="caption">
-                              profile.ir/MiladHazrati
-                            </Typography>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                      <Grid item>
-                        <Grid container spacing={1}>
-                          <Grid item>
-                            <svg
-                              viewBox="0 0 24 24"
-                              className={classes.profileIcons}
-                            >
-                              <g>
-                                <path d="M7.75 11.083c-.414 0-.75-.336-.75-.75C7 7.393 9.243 5 12 5c.414 0 .75.336.75.75s-.336.75-.75.75c-1.93 0-3.5 1.72-3.5 3.833 0 .414-.336.75-.75.75z"></path>
-                                <path d="M20.75 10.333c0-5.01-3.925-9.083-8.75-9.083s-8.75 4.074-8.75 9.083c0 4.605 3.32 8.412 7.605 8.997l-1.7 1.83c-.137.145-.173.357-.093.54.08.182.26.3.46.3h4.957c.198 0 .378-.118.457-.3.08-.183.044-.395-.092-.54l-1.7-1.83c4.285-.585 7.605-4.392 7.605-8.997zM12 17.917c-3.998 0-7.25-3.402-7.25-7.584S8.002 2.75 12 2.75s7.25 3.4 7.25 7.583-3.252 7.584-7.25 7.584z"></path>
-                              </g>
-                            </svg>
-                          </Grid>
-                          <Grid item>
-                            <Typography variant="caption">
-                              Born October 26, 1996
-                            </Typography>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                      <Grid item>
-                        <Grid container spacing={1}>
-                          <Grid item>
-                            <svg
-                              viewBox="0 0 24 24"
-                              className={classes.profileIcons}
-                            >
-                              <g>
-                                <path d="M19.708 2H4.292C3.028 2 2 3.028 2 4.292v15.416C2 20.972 3.028 22 4.292 22h15.416C20.972 22 22 20.972 22 19.708V4.292C22 3.028 20.972 2 19.708 2zm.792 17.708c0 .437-.355.792-.792.792H4.292c-.437 0-.792-.355-.792-.792V6.418c0-.437.354-.79.79-.792h15.42c.436 0 .79.355.79.79V19.71z"></path>
-                                <circle cx="7.032" cy="8.75" r="1.285"></circle>
-                                <circle
-                                  cx="7.032"
-                                  cy="13.156"
-                                  r="1.285"
-                                ></circle>
-                                <circle
-                                  cx="16.968"
-                                  cy="8.75"
-                                  r="1.285"
-                                ></circle>
-                                <circle
-                                  cx="16.968"
-                                  cy="13.156"
-                                  r="1.285"
-                                ></circle>
-                                <circle cx="12" cy="8.75" r="1.285"></circle>
-                                <circle cx="12" cy="13.156" r="1.285"></circle>
-                                <circle
-                                  cx="7.032"
-                                  cy="17.486"
-                                  r="1.285"
-                                ></circle>
-                                <circle cx="12" cy="17.486" r="1.285"></circle>
-                              </g>
-                            </svg>
-                          </Grid>
-                          <Grid item>
-                            <Typography variant="caption">
-                              Joined January 2013
-                            </Typography>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                  </Box>
-                  <Box m={1}>
-                    <Grid container spacing={2}>
-                      <Grid item>
-                        <Grid container spacing={1}>
-                          <Grid item>
-                            <Typography variant="caption">11</Typography>
-                          </Grid>
-                          <Grid item>
-                            <Typography variant="caption">Following</Typography>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                      <Grid item>
-                        <Grid container spacing={1}>
-                          <Grid item>
-                            <Typography variant="caption">11</Typography>
-                          </Grid>
-                          <Grid item>
-                            <Typography variant="caption">Followers</Typography>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                  </Box>
-                </Box>
               </Box>
               <div className={classes.tabs}>
                 <AppBar
@@ -500,10 +325,8 @@ export default function Dashboard(props) {
                     variant="fullWidth"
                     aria-label="full width tabs example"
                   >
-                    <Tab label="Tweets" {...a11yProps(0)} />
-                    <Tab label="Tweets / Replies" {...a11yProps(1)} />
-                    <Tab label="Media" {...a11yProps(2)} />
-                    <Tab label="Likes" {...a11yProps(3)} />
+                    <Tab label="All" {...a11yProps(0)} />
+                    <Tab label="Mentions" {...a11yProps(1)} />
                   </Tabs>
                 </AppBar>
                 <SwipeableViews
@@ -620,12 +443,6 @@ export default function Dashboard(props) {
                   <TabPanel value={value} index={1} dir={theme.direction}>
                     Item Two
                   </TabPanel>
-                  <TabPanel value={value} index={2} dir={theme.direction}>
-                    Item Three
-                  </TabPanel>
-                  <TabPanel value={value} index={3} dir={theme.direction}>
-                    Item Three
-                  </TabPanel>
                 </SwipeableViews>
               </div>
             </Grid>
@@ -647,37 +464,7 @@ export default function Dashboard(props) {
                   </Grid>
                 </Grid>
               </Box>
-              <Box
-                m={1}
-                marginLeft={2}
-                marginRight={0}
-                className={classes.album}
-              >
-                <GridList
-                  cellHeight={100}
-                  className={classes.gridList}
-                  cols={3}
-                >
-                  <GridListTile cols={1}>
-                    <img src="/static/aa.jpg" />
-                  </GridListTile>
-                  <GridListTile cols={1}>
-                    <img src="/static/aa.jpg" />
-                  </GridListTile>
-                  <GridListTile cols={1}>
-                    <img src="/static/aa.jpg" />
-                  </GridListTile>
-                  <GridListTile cols={1}>
-                    <img src="/static/aa.jpg" />
-                  </GridListTile>
-                  <GridListTile cols={1}>
-                    <img src="/static/aa.jpg" />
-                  </GridListTile>
-                  <GridListTile cols={1}>
-                    <img src="/static/aa.jpg" />
-                  </GridListTile>
-                </GridList>
-              </Box>
+
               <Box
                 m={1}
                 marginLeft={2}

@@ -7,7 +7,7 @@ import Routes from "./Routes";
 import { ThemeContextProvider, ThemeContextConsumer } from "./context/darkMode";
 import { CookiesProvider, useCookies, Cookies } from "react-cookie";
 const theme = createMuiTheme({
-  direction: "rtl",
+  //direction: "rtl",
   typography: {
     fontFamily: "IRANSans",
     palette: {
